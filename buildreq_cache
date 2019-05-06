@@ -1,0 +1,7 @@
+1.1.5
+glib-dev
+libxslt-bin
+pkg-config
+pkgconfig(32xorg-macros)
+pkgconfig(xorg-macros)
+xmlto

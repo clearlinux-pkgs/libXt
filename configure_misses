@@ -1,0 +1,17 @@
+Configure miss: X.Org SGML entities >= 1.01
+Configure miss: makestrs.c:331:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:348:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:357:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:420:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: X.Org SGML entities >= 1.01
+Configure miss: makestrs.c:331:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:348:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:357:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+
+Configure miss: makestrs.c:420:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
