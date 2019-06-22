@@ -1,17 +1,8 @@
 Configure miss: X.Org SGML entities >= 1.01
-Configure miss: makestrs.c:331:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:348:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:357:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:420:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
+Configure miss: x86_64-generic-linux-gnu-cpp
+Configure miss: if geo-tattler traces are wanted
+Configure miss: ABI options
 Configure miss: X.Org SGML entities >= 1.01
-Configure miss: makestrs.c:331:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:348:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:357:7: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
-
-Configure miss: makestrs.c:420:10: warning: format not a string literal, argument types not checked [-Wformat-nonliteral]
+Configure miss: i686-generic-linux-gnu-cpp
+Configure miss: if geo-tattler traces are wanted
+Configure miss: ABI options
