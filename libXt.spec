@@ -6,11 +6,11 @@
 #
 Name     : libXt
 Version  : 1.2.0
-Release  : 14
+Release  : 15
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
-Source99 : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2.sig
-Summary  : X11 toolkit intrinsics library
+Source1 : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2.sig
+Summary  : X Toolkit Library
 Group    : Development/Tools
 License  : X11
 Requires: libXt-lib = %{version}-%{release}
@@ -48,7 +48,6 @@ Summary: dev components for the libXt package.
 Group: Development
 Requires: libXt-lib = %{version}-%{release}
 Provides: libXt-devel = %{version}-%{release}
-Requires: libXt = %{version}-%{release}
 Requires: libXt = %{version}-%{release}
 
 %description dev
@@ -109,8 +108,8 @@ popd
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561211430
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568868851
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -125,14 +124,14 @@ make  %{?_smp_mflags}
 pushd ../build32/
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
-export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32"
-export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32"
-export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32"
+export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
+export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
+export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
 %configure --disable-static    --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
 make  %{?_smp_mflags}
 popd
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -141,7 +140,7 @@ cd ../build32;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1561211430
+export SOURCE_DATE_EPOCH=1568868851
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libXt
 cp COPYING %{buildroot}/usr/share/package-licenses/libXt/COPYING
