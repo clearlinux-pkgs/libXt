@@ -6,7 +6,7 @@
 #
 Name     : libXt
 Version  : 1.2.0
-Release  : 15
+Release  : 16
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
 Source1 : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2.sig
