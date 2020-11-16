@@ -6,10 +6,10 @@
 #
 Name     : libXt
 Version  : 1.2.0
-Release  : 16
+Release  : 17
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2
-Source1 : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2.sig
+Source1  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.0.tar.bz2.sig
 Summary  : X Toolkit Library
 Group    : Development/Tools
 License  : X11
@@ -100,6 +100,7 @@ license components for the libXt package.
 
 %prep
 %setup -q -n libXt-1.2.0
+cd %{_builddir}/libXt-1.2.0
 pushd ..
 cp -a libXt-1.2.0 build32
 popd
@@ -109,14 +110,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568868851
+export SOURCE_DATE_EPOCH=1605557065
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
@@ -135,15 +136,15 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 cd ../build32;
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1568868851
+export SOURCE_DATE_EPOCH=1605557065
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libXt
-cp COPYING %{buildroot}/usr/share/package-licenses/libXt/COPYING
+cp %{_builddir}/libXt-1.2.0/COPYING %{buildroot}/usr/share/package-licenses/libXt/72a2fb0bfa0ad71041e5b2100a1aef2a613da9a9
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
@@ -486,4 +487,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libXt/COPYING
+/usr/share/package-licenses/libXt/72a2fb0bfa0ad71041e5b2100a1aef2a613da9a9
