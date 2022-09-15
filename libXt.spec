@@ -6,7 +6,7 @@
 #
 Name     : libXt
 Version  : 1.2.1
-Release  : 18
+Release  : 19
 URL      : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.bz2
 Source1  : http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.bz2.sig
@@ -110,20 +110,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1611676210
+export SOURCE_DATE_EPOCH=1663279293
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 pushd ../build32/
-export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
 export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
 export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
 export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
@@ -141,15 +141,21 @@ cd ../build32;
 make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1611676210
+export SOURCE_DATE_EPOCH=1663279293
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libXt
-cp %{_builddir}/libXt-1.2.1/COPYING %{buildroot}/usr/share/package-licenses/libXt/72a2fb0bfa0ad71041e5b2100a1aef2a613da9a9
+cp %{_builddir}/libXt-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libXt/72a2fb0bfa0ad71041e5b2100a1aef2a613da9a9 || :
 pushd ../build32/
 %make_install32
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
 then
 pushd %{buildroot}/usr/lib32/pkgconfig
+for i in *.pc ; do ln -s $i 32$i ; done
+popd
+fi
+if [ -d %{buildroot}/usr/share/pkgconfig ]
+then
+pushd %{buildroot}/usr/share/pkgconfig
 for i in *.pc ; do ln -s $i 32$i ; done
 popd
 fi
