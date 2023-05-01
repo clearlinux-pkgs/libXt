@@ -1,5 +1,5 @@
 PKG_NAME := libXt
-URL = http://xorg.freedesktop.org/releases/individual/lib/libXt-1.2.1.tar.bz2
+URL = https://www.x.org/releases/individual/lib/libXt-1.3.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
